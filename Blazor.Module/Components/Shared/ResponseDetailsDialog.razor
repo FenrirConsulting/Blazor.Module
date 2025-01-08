@@ -1,0 +1,30 @@
+﻿<MudDialog>
+    <DialogContent>
+        <MudContainer Style="max-height: 600px; overflow-y: auto">
+            <MudText Typo="Typo.h6" Class="mb-4">API Response Details</MudText>
+
+            @if (SuccessResponse)
+            {
+                <MudAlert Severity="Severity.Success" Class="mb-4">Successfully retrieved user details</MudAlert>
+            }
+            else
+            {
+                <MudAlert Severity="Severity.Error" Class="mb-4">Error retrieving user details</MudAlert>
+            }
+
+            <MudExpansionPanels>
+                <MudExpansionPanel Text="Raw Response">
+                    <MudTextField T="string"
+                                  Lines="20"
+                                  Value="@FormatJson(RawResponse)"
+                                  ReadOnly="true"
+                                  Variant="Variant.Outlined" />
+                </MudExpansionPanel>
+            </MudExpansionPanels>
+        </MudContainer>
+    </DialogContent>
+    <DialogActions>
+        <MudButton Color="Color.Primary" OnClick="AddToTable">Add to Table</MudButton>
+        <MudButton Color="Color.Secondary" OnClick="Cancel">Cancel</MudButton>
+    </DialogActions>
+</MudDialog>

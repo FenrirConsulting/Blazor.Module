@@ -1,0 +1,263 @@
+﻿@page "/main"
+
+<PageTitle>Enable-Disable</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="pa-4" Style="height: calc(100vh-64px); overflow-y:auto">
+    <MudPaper Elevation="3" Class="pa-4">
+        <MudText Typo="Typo.h4" GutterBottom="true">Enable-Disable</MudText>
+
+        <MudGrid>
+            <MudItem xs="12" sm="3">
+                <MudTextField @bind-Value="@corpOmnicare" Label="Corp Omnicare.com" Variant="Variant.Outlined"></MudTextField>
+            </MudItem>
+            <MudItem xs="12" sm="3">
+                <MudTextField @bind-Value="@password" Label="Password" InputType="InputType.Password" Variant="Variant.Outlined"></MudTextField>
+            </MudItem>
+            <MudItem xs="12" sm="3">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" OnClick="@AuthenticateAsync">Authenticate</MudButton>
+            </MudItem>
+            <MudItem xs="12" sm="3" Class="d-flex align-center">
+                <MudText Typo="Typo.body2">Please provide Omnicare Admin credentials for Omnicare domain actions.</MudText>
+            </MudItem>
+        </MudGrid>
+
+        <MudPaper Elevation="0" Class="mt-4 pa-2" Style="border: 1px solid #e0e0e0;">
+            <MudGrid>
+                <MudItem xs="12" sm="4">
+                    <MudText Typo="Typo.subtitle1" Class="mb-1">Input</MudText>
+                    <MudRadioGroup @bind-Value="@selectedInput" Class="d-flex">
+                        <MudRadio Value="@("Manual")" Color="Color.Primary" Class="mr-2">Manual</MudRadio>
+                        <MudRadio Value="@("ImportFile")" Color="Color.Primary">Import File</MudRadio>
+                    </MudRadioGroup>
+                </MudItem>
+                @if (selectedInput == "Manual")
+                {
+                    <MudItem xs="12" sm="4">
+                        <MudText Typo="Typo.subtitle1" Class="mb-1">Action</MudText>
+                        <MudRadioGroup @bind-Value="@selectedAction" Class="d-flex">
+                            <MudRadio Value="@("Disable")" Color="Color.Primary" Class="mr-2">Disable</MudRadio>
+                            <MudRadio Value="@("Enable")" Color="Color.Primary">Enable</MudRadio>
+                        </MudRadioGroup>
+                    </MudItem>
+                    <MudItem xs="12" sm="4">
+                        <MudText Typo="Typo.subtitle1" Class="mb-1">Scope</MudText>
+                        <MudRadioGroup @bind-Value="@selectedScope" Class="d-flex">
+                            <MudRadio Value="@("SingleAccount")" Color="Color.Primary" Class="mr-2">Single Account</MudRadio>
+                            <MudRadio Value="@("AllAccounts")" Color="Color.Primary">All Accounts</MudRadio>
+                        </MudRadioGroup>
+                    </MudItem>
+                    <MudItem xs="12" sm="4">
+                        <MudText Typo="Typo.subtitle1" Class="mb-1">Criteria</MudText>
+                        <MudRadioGroup @bind-Value="@selectedCriteria" Class="d-flex">
+                            <MudRadio Value="@("SAMAccount")" Color="Color.Primary" Class="mr-2">SAM Account</MudRadio>
+                            <MudRadio Value="@("EmployeeID")" Color="Color.Primary">Employee ID</MudRadio>
+                        </MudRadioGroup>
+                    </MudItem>
+                }
+            </MudGrid>
+        </MudPaper>
+
+        @if (selectedInput == "Manual")
+        {
+            <MudGrid Class="mt-2">
+                <MudItem xs="12" sm="6">
+                    <MudSelect T="string" @bind-Value="@selectedDomain" Label="Domain" Variant="Variant.Outlined"
+                               Disabled="@(!isSingleAccountEnabled || selectedScope == "AllAccounts")">
+                        @foreach (var server in disableServers)
+                        {
+                            @if (server.Server != omnicareServer.Server || omnicareValidated)
+                            {
+                                <MudSelectItem Value="@server.Server">@server.Server</MudSelectItem>
+                            }
+                            else
+                            {
+                                <MudSelectItem Value="@server.Server" Disabled="true">@server.Server (Requires Omnicare Validation)</MudSelectItem>
+                            }
+                        }
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudTextField @bind-Value="@samAccount"
+                                  Label="@(selectedCriteria == "EmployeeID" ? "Employee Number" : "SAM Account")"
+                                  Variant="Variant.Outlined"></MudTextField>
+                </MudItem>
+            </MudGrid>
+
+            <MudGrid Class="mt-2">
+                <MudItem xs="12">
+                    <MudSelect T="string" @bind-Value="@disableComment" Label="Disable Comment" Variant="Variant.Outlined"
+                               Disabled="@(selectedAction == "Enable")">
+                        @foreach (var comment in disableComments)
+                        {
+                            <MudSelectItem Value="@comment">@comment</MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudItem>
+            </MudGrid>
+        }
+        else
+        {
+            <MudGrid Class="mt-2">
+                <MudItem xs="12" sm="1">
+                    <InputFile id="fileInput" OnChange="@OnInputFileChanged" hidden></InputFile>
+                    <MudButton HtmlTag="label"
+                               Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               StartIcon="@Icons.Material.Filled.FolderOpen"
+                               for="fileInput"
+                               Class="mt-1">
+                    </MudButton>
+                </MudItem>
+                <MudItem xs="12" sm="9">
+                    <MudTextField @bind-Value="@fileName" Label="Use File" Variant="Variant.Outlined" ReadOnly="true"></MudTextField>
+                </MudItem>
+                <MudItem xs="12" sm="2">
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" OnClick="@ImportFile" Class="mt-1">
+                        Import File
+                    </MudButton>
+                </MudItem>
+            </MudGrid>
+        }
+
+        <MudGrid Class="mt-4">
+            <MudItem xs="12" sm="3">
+                <MudButton Variant="Variant.Filled" Color="Color.Secondary" FullWidth="true" OnClick="@ResetForm">Reset Form</MudButton>
+            </MudItem>
+            @if (selectedInput == "Manual")
+            {
+                <MudItem xs="12" sm="3">
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" OnClick="@(() => ValidateForm())" Disabled="@isLoadingValidation">Validate</MudButton>
+                </MudItem>
+            }
+            <MudItem xs="12" sm="3">
+                <MudButton Variant="Variant.Filled" Color="Color.Success" FullWidth="true" OnClick="@ExecuteActionAsync">
+                    @(selectedInput == "ImportFile" ? "Enable / Disable" : GetButtonText())
+                </MudButton>
+            </MudItem>
+            <MudItem xs="12" sm="3">
+                <MudButton Variant="Variant.Filled" Color="Color.Info" StartIcon="@Icons.Material.Filled.ContentCopy" OnClick="@CopyTable">
+                    Copy Table
+                </MudButton>
+            </MudItem>
+            <MudItem xs="12" sm="3">
+                <MudButton Variant="Variant.Filled" Color="Color.Warning" FullWidth="true" OnClick="@GenerateRequestPayload">
+                    Generate Test Request Payload
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+
+        <MudTable Items="@items" Hover="true" Bordered="true" Striped="true" Class="mt-4 custom-table">
+            <HeaderContent>
+                <MudTh Class="custom-header">
+                    <MudText Typo="Typo.body1" Class="custom-header-text">Status</MudText>
+                </MudTh>
+                <MudTh Class="custom-header">
+                    <MudText Typo="Typo.body1" Class="custom-header-text">Comment</MudText>
+                </MudTh>
+                <MudTh Class="custom-header">
+                    <MudText Typo="Typo.body1" Class="custom-header-text">Action</MudText>
+                </MudTh>
+                <MudTh Class="custom-header">
+                    <MudText Typo="Typo.body1" Class="custom-header-text">Scope</MudText>
+                </MudTh>
+                <MudTh Class="custom-header">
+                    <MudText Typo="Typo.body1" Class="custom-header-text">Domain</MudText>
+                </MudTh>
+                <MudTh Class="custom-header">
+                    <MudText Typo="Typo.body1" class="custom-header-text">SAM Account or Employee Number</MudText>
+                </MudTh>
+                <MudTh Class="custom-header">
+                    <MudText Typo="Typo.body1" Class="custom-header-text">Disable Comment</MudText>
+                </MudTh>
+                <MudTh Class="custom-header">
+                    <MudText Typo="Typo.body1" Class="custom-header-text">User Details</MudText>
+                </MudTh>
+                <MudTh Class="custom-header">
+                    <MudText typeof="Typo.body1" Class="custom-header-text">Actions</MudText>
+                </MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Status" Class="custom-table-cell custom-border">@context.Status</MudTd>
+                <MudTd DataLabel="Comment" Class="custom-table-cell custom-border">@context.Comment</MudTd>
+                <MudTd DataLabel="Action" Class="custom-table-cell custom-border">@context.Action</MudTd>
+                <MudTd DataLabel="Scope" Class="custom-table-cell custom-border">@context.Scope</MudTd>
+                <MudTd DataLabel="Domain" Class="custom-table-cell custom-border">@context.Domain</MudTd>
+                <MudTd DataLabel="SAM Account" Class="custom-table-cell custom-border">@context.SamAccount</MudTd>
+                <MudTd DataLabel="Disable Comment" Class="custom-table-cell custom-border">@context.DisableComment</MudTd>
+
+                <MudTd DataLabel="Actions" Class="custom-table-cell custom-border">
+                    <MudButton Variant="Variant.Filled"
+                               Color="Color.Error"
+                               OnClick="@(() => DeleteItem(context))"
+                               Size="Size.Small">
+                        Remove
+                    </MudButton>
+                </MudTd>
+            </RowTemplate>
+        </MudTable>
+        @if (isLoadingValidation)
+        {
+            <MudPaper Class="d-flex align-center justify-center mud-width-full py-8 mt-4">
+                <MudProgressCircular Indeterminate="true" Size="Size.Large" Class="transparent-progress" />
+                <MudText Class="ml-4">Loading user details...</MudText>
+            </MudPaper>
+        }
+        @if (isLoadingRequest)
+        {
+            <MudPaper Elevation="0" Class="d-flex align-center justify-center py-8 mt-4" Style="background-color: transparent">
+                <MudProgressCircular Indeterminate="true" Size="Size.Large" Color="Color.Primary" Class="transparent-progress" />
+                <MudText Class="ml-4">Sending Enable / Disable Request(s)...</MudText>
+            </MudPaper>
+        }
+    </MudPaper>
+</MudContainer>
+
+<style>
+    .custom-table {
+        border-collapse: separate !important;
+        border-spacing: 0 !important;
+        border: 2px solid var(--mud-palette-dark) !important;
+    }
+
+        .custom-table th,
+        .custom-table .mud-table-cell,
+        .custom-table .custom-table-cell,
+        .custom-table .mud-table-cell.custom-border {
+            border: 2px solid var(--mud-palette-dark) !important;
+            border-top: none !important;
+            border-left: none !important;
+            padding: 12px !important;
+        }
+
+        .custom-table .custom-header {
+            background-color: var(--mud-palette-appbar-background) !important;
+        }
+
+        .custom-table .custom-header-text {
+            color: var(--mud-palette-white) !important;
+            font-weight: bold !important;
+        }
+
+        .custom-table tr:last-child .mud-table-cell,
+        .custom-table tr:last-child .custom-table-cell {
+            border-bottom: none !important;
+        }
+
+        .custom-table th:last-child,
+        .custom-table .mud-table-cell:last-child,
+        .custom-table .custom-table-cell:last-child {
+            border-right: none !important;
+        }
+
+        .custom-table thead tr:last-child th {
+            border-bottom: 2px solid var(--mud-palette-dark) !important;
+        }
+
+        .transprent-progress {
+            background-color: transparent !important;
+        }
+
+        .transperent-progress::before {
+        background-color: transparent !important;
+        }
+</style>

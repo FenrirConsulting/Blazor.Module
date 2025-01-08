@@ -1,0 +1,53 @@
+﻿@page "/admin"
+@attribute [Authorize(Roles = "Approver")]
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-16" Style="height: calc(100vh-64px); overflow-y:auto">
+    <MudText Typo="Typo.h3" GutterBottom="true">Admin Page</MudText>
+    <MudText Typo="Typo.h5" Color="Color.Primary">Application Configuration for @_appConfiguration!.AppLabel</MudText>
+
+    <MudExpansionPanels>
+        <MudExpansionPanel Text="Tools Configuration">
+            <MudPaper Elevation="3" Class="pa-4 mt-4">
+                <MudButton Color="Color.Primary" OnClick="@(() => OpenEditor(null))">Add New</MudButton>
+                @if (_toolConfigurations == null)
+                {
+                    <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+                }
+                else
+                {
+                    <MudTable Items="_toolConfigurations" Dense="true" Hover="true" Bordered="true" Striped="true">
+                        <HeaderContent>
+                            <MudTh>Setting</MudTh>
+                            <MudTh>Value</MudTh>
+                            <MudTh>Actions</MudTh>
+                        </HeaderContent>
+                        <RowTemplate>
+                            <MudTd DataLabel="Setting">@context.Setting</MudTd>
+                            <MudTd DataLabel="Value">
+                                <MudText>@(context.Value?.Length > 50 ? context.Value[..47] + "..." : context.Value)</MudText>
+                            </MudTd>
+                            <MudTd DataLabel="Actions">
+                                <MudButton Color="Color.Info" Variant="Variant.Outlined" OnClick="@(() => OpenEditor(context))">Edit</MudButton>
+                                <MudButton Color="Color.Error" Variant="Variant.Outlined" OnClick="@(() => RemoveItem(context.Id))">Remove</MudButton>
+                            </MudTd>
+                        </RowTemplate>
+                    </MudTable>
+                }
+            </MudPaper>
+        </MudExpansionPanel>
+    </MudExpansionPanels>
+</MudContainer>
+
+<MudDialog @bind-IsVisible="_isDialogVisible" Options="_dialogOptions">
+    <TitleContent>
+        <MudText Typo="Typo.h6">@(_isNewItem ? "Add New" : "Edit") Tools Configuration</MudText>
+    </TitleContent>
+    <DialogContent>
+        <MudTextField @bind-Value="((ToolsConfiguration)_editingItem!).Setting" Label="Setting" />
+        <MudTextField @bind-Value="((ToolsConfiguration)_editingItem!).Value" Label="Value (JSON)" Lines="10" />
+    </DialogContent>
+    <DialogActions>
+        <MudButton Color="Color.Primary" OnClick="SaveChanges">Save</MudButton>
+        <MudButton Color="Color.Secondary" OnClick="CancelEdit">Cancel</MudButton>
+    </DialogActions>
+</MudDialog>

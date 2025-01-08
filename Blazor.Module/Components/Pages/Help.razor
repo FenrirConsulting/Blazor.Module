@@ -1,0 +1,48 @@
+﻿@page "/help"
+
+<PageTitle>Help</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="d-flex flex-column pa-0" Style="height: calc(100vh - 64px);">
+    <MudPaper Elevation="0" Class="flex-grow-1 overflow-auto position-relative" Style="height: 100%;">
+        @if (_isLoading)
+        {
+            <MudProgressCircular Color="Color.Primary" Indeterminate="true" Class="ma-auto" />
+        }
+        else if (_document != null && _documentContent != null)
+        {
+            <div class="document-wrapper">
+                <div class="document-content">
+                    @((MarkupString)ConvertDocxToHtml())
+                </div>
+            </div>
+        }
+        else
+        {
+            <MudAlert Severity="Severity.Error">Unable to load the help document.</MudAlert>
+        }
+    </MudPaper>
+</MudContainer>
+
+<style>
+    .document-wrapper {
+        display: flex;
+        justify-content: center;
+        min-height: 100%;
+        background-color: var(--mud-palette-background);
+    }
+
+    .document-content {
+        line-height: 1.6;
+        color: var(--mud-palette-text-primary);
+        max-width: 800px;
+        width: 100%;
+        background-color: var(--mud-palette-surface);
+        padding: 2rem;
+        border-radius: var(--mud-default-borderradius);
+        box-shadow: var(--mud-elevation-2);
+    }
+
+        .document-content p {
+            margin-bottom: 1em;
+        }
+</style>

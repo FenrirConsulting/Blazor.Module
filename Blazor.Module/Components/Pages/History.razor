@@ -1,0 +1,138 @@
+﻿@page "/history"
+
+@* Page title *@
+<PageTitle>History</PageTitle>
+
+@* Main container *@
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="pa-4" Style="height: calc(100vh-64px); overflow-y:auto">
+    <MudPaper Elevation="3" Class="pa-4">
+        @* Page header *@
+        <MudText Typo="Typo.h4" GutterBottom="true">History</MudText>
+
+        @* Search options *@
+        <MudGrid>
+            @* Radio buttons for search scope *@
+            <MudItem xs="12" sm="6">
+                <MudRadioGroup T="string" Value="@_selectedScope" Class="d-flex flex-column" ValueChanged="OnScopeChanged">
+                    <MudRadio Value="@("SingleAccount")" Color="Color.Primary" Class="mb-2">Single Account</MudRadio>
+                    <MudRadio Value="@("AllAccounts")" Color="Color.Primary" Class="mb-2">All Accounts</MudRadio>
+                    <MudRadio Value="@("SubmittedByMe")" Color="Color.Primary" Class="mb-2">Submitted By Me</MudRadio>
+                    <MudRadio Value="@("SubmittedByAccount")" Color="Color.Primary">Submitted By Account</MudRadio>
+                </MudRadioGroup>
+            </MudItem>
+            @* Search text field *@
+            <MudItem xs="12" sm="6">
+                <MudTextField @bind-Value="@_searchText"
+                              Label="@GetSearchBoxLabel()"
+                              Variant="Variant.Outlined"
+                              ReadOnly="@(_selectedScope == "SubmittedByMe")"></MudTextField>
+            </MudItem>
+        </MudGrid>
+
+        @* Action buttons *@
+        <MudGrid Class="mt-4">
+            <MudItem xs="12" sm="4">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" OnClick="@SearchAsync">Search</MudButton>
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudButton Variant="Variant.Filled" Color="Color.Secondary" FullWidth="true" OnClick="@GetRefreshAllAsync">Get / Refresh All</MudButton>
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudButton Variant="Variant.Filled" Color="Color.Info" StartIcon="@Icons.Material.Filled.ContentCopy" OnClick="@CopyTable">
+                    Copy Table
+                </MudButton>
+            </MudItem>
+            <MudItem xs="12" sm="3">
+                <MudButton Variant="Variant.Filled" Color="Color.Error" FullWidth="true" OnClick="@ClearData">Clear Data</MudButton>
+            </MudItem>
+        </MudGrid>
+
+        @* Results table *@
+        @if (_items.Any())
+        {
+            <MudTable Items="@_items" Hover="true" Bordered="true" Striped="true" Class="mt-4 custom-table" HorizontalScrollbar="true">
+                <HeaderContent>
+                    @* Table header content *@
+                    <MudTh Class="custom-header"><MudText Typo="Typo.body1" Class="custom-header-text">RequestID</MudText></MudTh>
+                    <MudTh Class="custom-header"><MudText Typo="Typo.body1" Class="custom-header-text">SubmittedBy</MudText></MudTh>
+                    <MudTh Class="custom-header"><MudText Typo="Typo.body1" Class="custom-header-text">Completed</MudText></MudTh>
+                    <MudTh Class="custom-header"><MudText Typo="Typo.body1" Class="custom-header-text">Date Created</MudText></MudTh>
+                    <MudTh Class="custom-header"><MudText Typo="Typo.body1" Class="custom-header-text">Status</MudText></MudTh>
+                    <MudTh Class="custom-header"><MudText Typo="Typo.body1" Class="custom-header-text">Domain</MudText></MudTh>
+                    <MudTh Class="custom-header"><MudText Typo="Typo.body1" Class="custom-header-text">Disabled</MudText></MudTh>
+                    <MudTh Class="custom-header"><MudText Typo="Typo.body1" Class="custom-header-text">SAM</MudText></MudTh>
+                    <MudTh Class="custom-header"><MudText Typo="Typo.body1" Class="custom-header-text">OU</MudText></MudTh>
+                    <MudTh Class="custom-header"><MudText Typo="Typo.body1" Class="custom-header-text">EA8</MudText></MudTh>
+                    <MudTh Class="custom-header"><MudText Typo="Typo.body1" Class="custom-header-text">Description</MudText></MudTh>
+                    <MudTh Class="custom-header"><MudText Typo="Typo.body1" Class="custom-header-text">Manager</MudText></MudTh>
+                    <MudTh Class="custom-header"><MudText Typo="Typo.body1" Class="custom-header-text">MemberOf</MudText></MudTh>
+                    <MudTh Class="custom-header"><MudText Typo="Typo.body1" Class="custom-header-text">Employee Number</MudText></MudTh>
+                    <MudTh Class="custom-header"><MudText Typo="Typo.body1" Class="custom-header-text">msDBUseDefaults</MudText></MudTh>
+                    <MudTh Class="custom-header"><MudText Typo="Typo.body1" Class="custom-header-text">MSExchHideFromAddressList</MudText></MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    @* Table row content *@
+                    <MudTd DataLabel="RequestID" Class="custom-table-cell custom-border">@context.RequestID</MudTd>
+                    <MudTd DataLabel="SubmittedBy" Class="custom-table-cell custom-border">@context.SubmittedBy</MudTd>
+                    <MudTd DataLabel="Completed" Class="custom-table-cell custom-border">@context.Completed</MudTd>
+                    <MudTd DataLabel="Date Created" Class="custom-table-cell custom-border">@context.WhenCreated</MudTd>
+                    <MudTd DataLabel="Status" Class="custom-table-cell custom-border">@context.ActionResult</MudTd>
+                    <MudTd DataLabel="Domain" Class="custom-table-cell custom-border">@context.SourceDomain</MudTd>
+                    <MudTd DataLabel="Disabled" Class="custom-table-cell custom-border">@(context.Disabled ? "True" : "False")</MudTd>
+                    <MudTd DataLabel="SAM" Class="custom-table-cell custom-border">@context.SourceSamAccountName</MudTd>
+                    <MudTd DataLabel="OU" Class="custom-table-cell custom-border">@context.SourceOriginalOU</MudTd>
+                    <MudTd DataLabel="EA8" Class="custom-table-cell custom-border">@context.ExtensionAttribute8</MudTd>
+                    <MudTd DataLabel="Description" Class="custom-table-cell custom-border">@context.Description</MudTd>
+                    <MudTd DataLabel="Manager" Class="custom-table-cell custom-border">@context.SourceManager</MudTd>
+                    <MudTd DataLabel="MemberOf" Class="custom-table-cell custom-border">@context.SourceMemberOf</MudTd>
+                    <MudTd DataLabel="Employee Number" Class="custom-table-cell custom-border">@context.EmployeeNumber</MudTd>
+                    <MudTd DataLabel="msDBUseDefaults" Class="custom-table-cell custom-border">@context.MsDBUseDefaults</MudTd>
+                    <MudTd DataLabel="MSExchHideFromAddressList" Class="custom-table-cell custom-border">@context.MsExchHideFromAddressList</MudTd>
+                </RowTemplate>
+            </MudTable>
+        }
+    </MudPaper>
+</MudContainer>
+
+@* CSS styles *@
+<style>
+    .custom-table {
+        border-collapse: separate !important;
+        border-spacing: 0 !important;
+        border: 2px solid var(--mud-palette-dark) !important;
+    }
+
+        .custom-table th,
+        .custom-table .mud-table-cell,
+        .custom-table .custom-table-cell,
+        .custom-table .mud-table-cell.custom-border {
+            border: 2px solid var(--mud-palette-dark) !important;
+            border-top: none !important;
+            border-left: none !important;
+            padding: 12px !important;
+        }
+
+        .custom-table .custom-header {
+            background-color: var(--mud-palette-appbar-background) !important;
+        }
+
+        .custom-table .custom-header-text {
+            color: var(--mud-palette-white) !important;
+            font-weight: bold !important;
+        }
+
+        .custom-table tr:last-child .mud-table-cell,
+        .custom-table tr:last-child .custom-table-cell {
+            border-bottom: none !important;
+        }
+
+        .custom-table th:last-child,
+        .custom-table .mud-table-cell:last-child,
+        .custom-table .custom-table-cell:last-child {
+            border-right: none !important;
+        }
+
+        .custom-table thead tr:last-child th {
+            border-bottom: 2px solid var(--mud-palette-dark) !important;
+        }
+</style>
