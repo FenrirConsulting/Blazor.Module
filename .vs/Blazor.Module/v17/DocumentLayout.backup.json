@@ -1,0 +1,170 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "\\\\Hofund\\Repositories\\Blazor.Module\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5DEB7D7E-817A-4A1F-B89B-25DF47E75403}|Blazor.RCL\\Blazor.RCL.csproj|\\\\hofund\\repositories\\blazor.module\\blazor.rcl\\uicomponents\\layouts\\modulelayout.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DEB7D7E-817A-4A1F-B89B-25DF47E75403}|Blazor.RCL\\Blazor.RCL.csproj|\\\\hofund\\repositories\\blazor.module\\blazor.rcl\\uicomponents\\layouts\\modulelayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DEB7D7E-817A-4A1F-B89B-25DF47E75403}|Blazor.RCL\\Blazor.RCL.csproj|\\\\hofund\\repositories\\blazor.module\\blazor.rcl\\infrastructure\\services\\themeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DEB7D7E-817A-4A1F-B89B-25DF47E75403}|Blazor.RCL\\Blazor.RCL.csproj|\\\\hofund\\repositories\\blazor.module\\blazor.rcl\\infrastructure\\services\\interfaces\\ithemeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DEB7D7E-817A-4A1F-B89B-25DF47E75403}|Blazor.RCL\\Blazor.RCL.csproj|\\\\hofund\\repositories\\blazor.module\\blazor.rcl\\uicomponents\\components\\menubar.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DEB7D7E-817A-4A1F-B89B-25DF47E75403}|Blazor.RCL\\Blazor.RCL.csproj|\\\\hofund\\repositories\\blazor.module\\blazor.rcl\\uicomponents\\layouts\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E291B09-8892-436C-87B7-F86B33110B07}|Blazor.Module\\Blazor.Module.csproj|\\\\hofund\\repositories\\blazor.module\\blazor.module\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E291B09-8892-436C-87B7-F86B33110B07}|Blazor.Module\\Blazor.Module.csproj|\\\\hofund\\repositories\\blazor.module\\blazor.module\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E291B09-8892-436C-87B7-F86B33110B07}|Blazor.Module\\Blazor.Module.csproj|\\\\hofund\\repositories\\blazor.module\\blazor.module\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ModuleLayout.razor.cs",
+              "DocumentMoniker": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.RCL\\UIComponents\\Layouts\\ModuleLayout.razor.cs",
+              "RelativeDocumentMoniker": "Blazor.RCL\\UIComponents\\Layouts\\ModuleLayout.razor.cs",
+              "ToolTip": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.RCL\\UIComponents\\Layouts\\ModuleLayout.razor.cs",
+              "RelativeToolTip": "Blazor.RCL\\UIComponents\\Layouts\\ModuleLayout.razor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T03:05:19.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ModuleLayout.razor",
+              "DocumentMoniker": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.RCL\\UIComponents\\Layouts\\ModuleLayout.razor",
+              "RelativeDocumentMoniker": "Blazor.RCL\\UIComponents\\Layouts\\ModuleLayout.razor",
+              "ToolTip": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.RCL\\UIComponents\\Layouts\\ModuleLayout.razor",
+              "RelativeToolTip": "Blazor.RCL\\UIComponents\\Layouts\\ModuleLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-10T03:05:12.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IThemeService.cs",
+              "DocumentMoniker": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.RCL\\Infrastructure\\Services\\Interfaces\\IThemeService.cs",
+              "RelativeDocumentMoniker": "Blazor.RCL\\Infrastructure\\Services\\Interfaces\\IThemeService.cs",
+              "ToolTip": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.RCL\\Infrastructure\\Services\\Interfaces\\IThemeService.cs",
+              "RelativeToolTip": "Blazor.RCL\\Infrastructure\\Services\\Interfaces\\IThemeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T03:03:48.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MenuBar.razor.cs",
+              "DocumentMoniker": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.RCL\\UIComponents\\Components\\MenuBar.razor.cs",
+              "RelativeDocumentMoniker": "Blazor.RCL\\UIComponents\\Components\\MenuBar.razor.cs",
+              "ToolTip": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.RCL\\UIComponents\\Components\\MenuBar.razor.cs",
+              "RelativeToolTip": "Blazor.RCL\\UIComponents\\Components\\MenuBar.razor.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAAwIYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T02:29:40.049Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.Module\\_Imports.razor",
+              "RelativeDocumentMoniker": "Blazor.Module\\_Imports.razor",
+              "ToolTip": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.Module\\_Imports.razor",
+              "RelativeToolTip": "Blazor.Module\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-10T02:20:38.377Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ThemeService.cs",
+              "DocumentMoniker": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.RCL\\Infrastructure\\Services\\ThemeService.cs",
+              "RelativeDocumentMoniker": "Blazor.RCL\\Infrastructure\\Services\\ThemeService.cs",
+              "ToolTip": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.RCL\\Infrastructure\\Services\\ThemeService.cs",
+              "RelativeToolTip": "Blazor.RCL\\Infrastructure\\Services\\ThemeService.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAwwIcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T02:10:06.635Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.RCL\\UIComponents\\Layouts\\MainLayout.razor",
+              "RelativeDocumentMoniker": "Blazor.RCL\\UIComponents\\Layouts\\MainLayout.razor",
+              "ToolTip": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.RCL\\UIComponents\\Layouts\\MainLayout.razor",
+              "RelativeToolTip": "Blazor.RCL\\UIComponents\\Layouts\\MainLayout.razor",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-10T00:43:30.794Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.Module\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Blazor.Module\\DependencyInjection.cs",
+              "ToolTip": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.Module\\DependencyInjection.cs",
+              "RelativeToolTip": "Blazor.Module\\DependencyInjection.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T00:35:59.57Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.Module\\Program.cs",
+              "RelativeDocumentMoniker": "Blazor.Module\\Program.cs",
+              "ToolTip": "\\\\Hofund\\Repositories\\Blazor.Module\\Blazor.Module\\Program.cs",
+              "RelativeToolTip": "Blazor.Module\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T00:32:09.763Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = 
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows,browser
+build_property.RootNamespace = Blazor.RCL
+build_property.RootNamespace = Blazor.RCL
+build_property.ProjectDir = \\Hofund\Repositories\Blazor.Module\Blazor.RCL\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = \\Hofund\Repositories\Blazor.Module\Blazor.RCL
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[//Hofund/Repositories/Blazor.Module/Blazor.RCL/UIComponents/Pages/Error.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlDb21wb25lbnRzXFBhZ2VzXEVycm9yLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[//Hofund/Repositories/Blazor.Module/Blazor.RCL/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[//Hofund/Repositories/Blazor.Module/Blazor.RCL/UIComponents/Components/AppBar.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlDb21wb25lbnRzXENvbXBvbmVudHNcQXBwQmFyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-jn0yahmll4
+
+[//Hofund/Repositories/Blazor.Module/Blazor.RCL/UIComponents/Components/JsonDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlDb21wb25lbnRzXENvbXBvbmVudHNcSnNvbkRpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-i5ck8n8mgh
+
+[//Hofund/Repositories/Blazor.Module/Blazor.RCL/UIComponents/Components/MenuBar.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlDb21wb25lbnRzXENvbXBvbmVudHNcTWVudUJhci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-p2xp4vz2ry
+
+[//Hofund/Repositories/Blazor.Module/Blazor.RCL/UIComponents/Components/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlDb21wb25lbnRzXENvbXBvbmVudHNcTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-hy71c6gudz
+
+[//Hofund/Repositories/Blazor.Module/Blazor.RCL/UIComponents/Components/ScriptVariablesEditor.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlDb21wb25lbnRzXENvbXBvbmVudHNcU2NyaXB0VmFyaWFibGVzRWRpdG9yLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-ghap0lw4rf
+
+[//Hofund/Repositories/Blazor.Module/Blazor.RCL/UIComponents/Layouts/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlDb21wb25lbnRzXExheW91dHNcTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-88ogh7glnz
+
+[//Hofund/Repositories/Blazor.Module/Blazor.RCL/UIComponents/Layouts/ModuleLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlDb21wb25lbnRzXExheW91dHNcTW9kdWxlTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-7603tdafxe
+
+[//Hofund/Repositories/Blazor.Module/Blazor.RCL/UIComponents/Layouts/PublicLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlDb21wb25lbnRzXExheW91dHNcUHVibGljTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-ge4i93g732
+
+[//Hofund/Repositories/Blazor.Module/Blazor.RCL/UIComponents/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlDb21wb25lbnRzXFBhZ2VzXENvdW50ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-acz45lwnth
+
+[//Hofund/Repositories/Blazor.Module/Blazor.RCL/UIComponents/Pages/Weather.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlDb21wb25lbnRzXFBhZ2VzXFdlYXRoZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-rug5mr391c
